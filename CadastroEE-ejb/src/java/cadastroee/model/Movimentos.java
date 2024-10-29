@@ -3,11 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package cadastroee.model;
-
+import javax.persistence.Entity;
 /**
  *
  * @author pedro
  */
+@Entity
 public class Movimentos {
     
 }
