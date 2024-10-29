@@ -57,7 +57,7 @@ public class Produtos implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "PrecoVendaBase")
-    private BigDecimal precoVendaBase;
+    private Float precoVendaBase;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "produtosIDProduto")
     private Collection<Movimentos> movimentosCollection;
 
@@ -68,7 +68,7 @@ public class Produtos implements Serializable {
         this.iDProduto = iDProduto;
     }
 
-    public Produtos(Integer iDProduto, String nomeProduto, int quantidadeProduto, BigDecimal precoVendaBase) {
+    public Produtos(Integer iDProduto, String nomeProduto, int quantidadeProduto, Float precoVendaBase) {
         this.iDProduto = iDProduto;
         this.nomeProduto = nomeProduto;
         this.quantidadeProduto = quantidadeProduto;
@@ -99,11 +99,11 @@ public class Produtos implements Serializable {
         this.quantidadeProduto = quantidadeProduto;
     }
 
-    public BigDecimal getPrecoVendaBase() {
+    public Float getPrecoVendaBase() {
         return precoVendaBase;
     }
 
-    public void setPrecoVendaBase(BigDecimal precoVendaBase) {
+    public void setPrecoVendaBase(Float precoVendaBase) {
         this.precoVendaBase = precoVendaBase;
     }
 
