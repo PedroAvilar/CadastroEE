@@ -62,6 +62,7 @@ public class ServletProdutoFC extends HttpServlet {
                     int id = Integer.parseInt(request.getParameter("id"));
                     Produtos produtoAlterado = facade.find(id);
                     produtoAlterado.setNomeProduto(request.getParameter("nome"));
+                    produtoAlterado.setQuantidadeProduto(Integer.parseInt(request.getParameter("quantidade")));
                     produtoAlterado.setPrecoVendaBase(Float.valueOf(request.getParameter("preco")));
                     facade.edit(produtoAlterado);
                     request.setAttribute("produtos", facade.findAll());
@@ -79,7 +80,7 @@ public class ServletProdutoFC extends HttpServlet {
                 default: {
                 List<Produtos> produtos = facade.findAll();
                 request.setAttribute("produtos", produtos);
-                destino = "ProdutosLista.jsp";
+                destino = "ProdutoDados.jsp";
                 break;
                 }
             }
