@@ -30,9 +30,9 @@ public class ServletProdutoFC extends HttpServlet {
         String destino;
 
         if ("formIncluir".equals(acao) || "formAlterar".equals(acao)) {
-            destino = "Produtos.jsp";
+            destino = "ProdutoDados.jsp";
         } else {
-            destino = "ProdutosLista.jsp";
+            destino = "ProdutoLista.jsp";
         }
         
         try {
@@ -67,15 +67,22 @@ public class ServletProdutoFC extends HttpServlet {
                 case "incluir": {
                     Produtos novoProduto = new Produtos();
                     novoProduto.setNomeProduto(request.getParameter("nome"));
-                    novoProduto.setNomeProduto(request.getParameter("quantidade"));
+                    novoProduto.setQuantidadeProduto(Integer.parseInt(request.getParameter("quantidade")));
                     novoProduto.setPrecoVendaBase(Float.valueOf(request.getParameter("preco")));
                     facade.create(novoProduto);
                     request.setAttribute("produtos", facade.findAll());
                     break;
                 }
+                default: {
+                List<Produtos> produtos = facade.findAll();
+                request.setAttribute("produtos", produtos);
+                destino = "ProdutosLista.jsp";
+                break;
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
+            request.setAttribute("errorMessage", "Ocorreu um erro ao processar a requisição.");
         }
         
         RequestDispatcher rd = request.getRequestDispatcher(destino);
