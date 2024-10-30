@@ -27,6 +27,9 @@ public class ServletProdutoFC extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String acao = request.getParameter("acao");
+        if (acao == null || acao.isEmpty()) {
+            acao = "listar";
+        }
         String destino;
 
         if ("formIncluir".equals(acao) || "formAlterar".equals(acao)) {
