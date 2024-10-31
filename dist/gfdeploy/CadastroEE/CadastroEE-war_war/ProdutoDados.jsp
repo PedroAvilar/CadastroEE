@@ -21,16 +21,15 @@
         <title>CadastroEE</title>
     </head>
     
-    <body>
-        <h1><%= request.getAttribute("acao") != null && request.getAttribute("acao").equals("formAlterar") ?
-                "Alterar Produto" : "Novo Produto"%></h1>
-        
+    <body class="container">
         <%
             Produtos produto = (Produtos) request.getAttribute("produto");
             String acao = (produto == null) ? "incluir" : "alterar";
         %>
+
+        <h1><%= "alterar".equals(acao) ? "Alterar Produto" : "Novo Produto" %></h1>
         
-        <form action="ServletProdutoFC" method="post">
+        <form class="form" action="ServletProdutoFC" method="post">
             <input type="hidden" name="acao" value="<%= acao%>">
             
             <%
@@ -40,19 +39,25 @@
                 }
             %>
             
-            <label for="nome">Nome: </label>
-            <input type="text" name="nome" id="nome" 
-                   value="<%= produto != null ? produto.getNomeProduto() : "" %>" required>
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome: </label>
+                <input type="text" name="nome" id="nome" class="form-control" 
+                    value="<%= produto != null ? produto.getNomeProduto() : "" %>" required>
+            </div>
             
-            <label for="quantidade">Quantidade: </label>
-            <input type="number" name="quantidade" id="quantidade" 
-                   value="<%= produto != null ? String.valueOf(produto.getQuantidadeProduto()) : "" %>" required>
+            <div class="mb-3">
+                <label for="quantidade" class="form-label">Quantidade: </label>
+                <input type="number" name="quantidade" id="quantidade" class="form-control" 
+                    value="<%= produto != null ? String.valueOf(produto.getQuantidadeProduto()) : "" %>" required>
+            </div>
             
-            <label for="preco">Preço de Venda: </label>
-            <input type="number" step="0.01" name="preco" id="preco" 
-                   value="<%= produto != null ? String.valueOf(produto.getPrecoVendaBase()) : "" %>" required>
+            <div class="mb-3">
+                <label for="preco" class="form-label">Preço de Venda: </label>
+                <input type="number" step="0.01" name="preco" id="preco" class="form-control" 
+                    value="<%= produto != null ? String.valueOf(produto.getPrecoVendaBase()) : "" %>" required>
+            </div>
             
-            <button type="submit"><%= "alterar".equals(acao) ? "Salvar Alterações" : "Adicionar Produto" %></button>
+            <button type="submit" class="btn btn-primary"><%= "alterar".equals(acao) ? "Salvar Alterações" : "Adicionar Produto" %></button>
         </form>
         
     </body>
