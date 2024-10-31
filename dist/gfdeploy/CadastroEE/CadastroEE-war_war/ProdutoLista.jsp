@@ -20,13 +20,13 @@
         <title>CadastroEE</title>
     </head>
     
-    <body>
+    <body class="container">
         <h1>Listagem de Produtos</h1>
         
-        <a href="ServletProdutoFC?acao=formIncluir">Novo Produto</a>
+        <a href="ServletProdutoFC?acao=formIncluir" class="btn btn-primary m-2">Novo Produto</a>
         
-        <table>
-            <thead>
+        <table class="table table-striped">
+            <thead class="table-dark">
                 <tr>
                     <th>ID</th>
                     <th>Nome</th>
@@ -48,8 +48,10 @@
                                 <td><%= produto.getQuantidadeProduto() %></td>
                                 <td>R$ <%= produto.getPrecoVendaBase() %></td>
                                 <td>
-                                    <a href="ServletProdutoFC?acao=formAlterar&id=<%= produto.getIDProduto() %>">Alterar</a> |
+                                    <a href="ServletProdutoFC?acao=formAlterar&id=<%= produto.getIDProduto() %>" 
+                                       class="btn btn-primary btn-sm">Alterar</a> |
                                     <a href="ServletProdutoFC?acao=excluir&id=<%= produto.getIDProduto() %>" 
+                                       class="btn btn-danger btn-sm" 
                                        onclick="return confirm('Tem certeza que deseja excluir este produto?');">Excluir</a>
                                 </td>
                             </tr>
