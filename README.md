@@ -10,7 +10,7 @@ Utilizando as ferramentas Microsoft SQL Server Management Studio (SSMS), Java De
 
 
 Página de listagem de produtos
-![Captura de tela.](imagens/Captura_de_tela--Listagem_de_Produto.png)
+![Captura de tela.](imagens/Captura_de_tela--Listagem_de_Produtos.png)
 
 
 Página para alterar um produto
